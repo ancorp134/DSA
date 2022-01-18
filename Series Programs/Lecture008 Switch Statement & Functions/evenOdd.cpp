@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-
+// we are returning this
 //1 -> Even
 // 0 -> odd
 bool isEven(int a) {
