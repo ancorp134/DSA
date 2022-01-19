@@ -44,8 +44,8 @@ int main() {
     //initialising all locations with 1 [not possible with below line]
     int fifth[10] = {1};
 
-    n = 10;
-    //printArray(fifth, 10);
+// instead we have to use this inbuilt function or we can use a forloop
+// fill_n(array, size, value);
 
     int fifthSize = sizeof(fifth)/sizeof(int);
     cout<<" Size of Fifth is " << fifthSize <<endl;
