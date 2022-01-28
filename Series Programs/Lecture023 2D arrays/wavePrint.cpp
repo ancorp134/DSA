@@ -1,3 +1,6 @@
+// cODEstudio ==> wave print
+//time Complexity ==> O(n*m)
+
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -17,7 +20,7 @@ vector<int> wavePrint(vector<vector<int> > arr, int nRows, int mCols)
         }
         else
         {
-            // 0 or even iondex -> top to bottom
+            // 0 or even index -> top to bottom
             for(int row = 0; row<nRows; row++) {
                 //cout << arr[row][col] << " ";
                 ans.push_back(arr[row][col]);
