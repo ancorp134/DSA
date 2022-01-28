@@ -9,8 +9,9 @@ public:
         int col = matrix[0].size();
         
         int start = 0;
-        int end  = row*col-1;
+        int end  = row*col-1; // -1 because we are not considering starting element
         
+        //this is used for mid point
         int mid = start + (end-start)/2;
         
         while(start<=end) {

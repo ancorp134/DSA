@@ -1,3 +1,8 @@
+// leetcode ==> https://leetcode.com/problems/spiral-matrix/
+// this is very important as asked by many companies
+//time Complexity ==> O(n*m)
+
+
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -21,6 +26,7 @@ public:
         
         
         while(count < total) {
+            // we are checking count < total in every iteration because it may happen that count will cross total inside for loop only
             
             //print starting row
             for(int index = startingCol; count < total && index<=endingCol; index++) {
