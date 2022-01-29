@@ -3,18 +3,20 @@ using namespace std;
 
 int main () {
 
-    //pointer to int is created, and pointing to some garbage address
+    //pointer to int is created, and pointing to some garbage address so it is best to initialize the ptr to 0 or null
     //int *p = 0; 
 
     //cout << *p << endl;
 
-    /*
+    /* BOTH OF THESE METHODS ARE SAME
+    1st method
     int i = 5;
 
     int *q = &i;
     cout << q << endl;
     cout << *q << endl;
 
+    2nd method
     int *p = 0;
     p = &i;
 
@@ -45,6 +47,7 @@ int main () {
    //cout <<  (*t)++ << endl;
    *t = *t +1;
     cout << *t << endl;
+    //in this the address is increased by the size of data type of ptr
     cout << " before t " << t << endl;
     t = t + 1;
     cout << " after t " << t << endl;

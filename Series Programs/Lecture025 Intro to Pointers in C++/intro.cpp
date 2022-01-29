@@ -1,3 +1,5 @@
+//for any data type size of ptr will always be 8 bytes whether it is int,char,float,double etc
+
 #include<iostream>
 using namespace std;
 
@@ -22,6 +24,8 @@ int main () {
     cout << "Address is : " << p2 << endl;
     cout << "value is : " << *p2 << endl;
 
+
+//must check the size of ptr
     cout << " size of integer is " << sizeof(num) << endl;
     cout << " size of pointer is " << sizeof(ptr) << endl;
     cout << " size of pointer is " << sizeof(p2) << endl;
