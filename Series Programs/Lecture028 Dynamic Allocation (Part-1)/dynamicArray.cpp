@@ -1,3 +1,5 @@
+//memory created inside heap always return the address of the memory space
+//we have to use pointer to access that memory                    directly using the name of variable will give error
 #include<iostream>
 using namespace std;
 
