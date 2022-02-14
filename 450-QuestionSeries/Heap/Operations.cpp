@@ -13,8 +13,8 @@ class Heap
         else // it is max heap
             return a > b;
     }
-
-    void heapify(int idx)
+    // time complexity of heapify is O(logn)
+    void heapify(vector<int> &v, int idx, int size)
     {
         int left = 2 * idx;
         int right = 2 * idx + 1;
@@ -32,7 +32,7 @@ class Heap
         if (min_idx != idx) // this will act as base case too
         {
             swap(v[idx], v[min_idx]);
-            heapify(min_idx);
+            heapify(v, min_idx, size);
         }
     }
 
@@ -46,6 +46,7 @@ public:
         // if true than minHeap and if false than maxHeap
         minHeap = true;
     }
+    // time complexity of insert is O(logn)
     void push(int d)
     {
         v.push_back(d);
@@ -66,25 +67,55 @@ public:
     {
         return v[1];
     }
+    // time complexity of pop is O(logn)
     void pop()
     {
         int last_idx = v.size() - 1;
         swap(v[1], v[last_idx]);
         v.pop_back();
         // we are passing the index that we want to heapify
-        heapify(1);
+        heapify(v, 1, last_idx - 1);
     }
-    //if heap is empty it will return size 1 as we had block the 0th index
+    // if heap is empty it will return size 1 as we had block the 0th index
     bool isEmpty()
     {
         return v.size() == 1;
+    }
+    // build heap from a vector given
+    void buildHeap(vector<int> &v)
+    {
+        for (int i = (v.size() - 1) / 2; i >= 1; i--)
+        {
+            heapify(v, i, v.size());
+        }
+    }
+
+    void print(vector<int> v)
+    {
+        for (int i = 1; i < v.size(); i++)
+            cout << v[i] << " ";
+        cout << endl;
+    }
+    // time complexity of heapSort is O(n*log(n))
+    void heapsort(vector<int> &arr)
+    {
+        buildHeap(arr);
+        int n = arr.size();
+
+        // remove n-1 elements from the heap
+        while (n > 1)
+        {
+            swap(arr[1], arr[n - 1]);
+            n--;
+            heapify(arr, 1, n);
+        }
     }
 };
 
 int main()
 {
     // give some initial size,type
-//for maxheap Heap h(10,false);
+    // for maxheap Heap h(10,false);
     Heap h;
     int n;
     cin >> n;
@@ -95,8 +126,8 @@ int main()
         h.push(d);
     }
 
-    //remove all elements from the heap one by one
-    while(!h.isEmpty())
+    // remove all elements from the heap one by one
+    while (!h.isEmpty())
     {
         cout << h.top() << " ";
         h.pop();
