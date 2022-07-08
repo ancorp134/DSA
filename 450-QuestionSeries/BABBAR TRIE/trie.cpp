@@ -20,6 +20,7 @@ public:
             children[i] = NULL;
         }
     }
+    
 };
 class Trie
 {
