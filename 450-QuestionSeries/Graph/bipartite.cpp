@@ -1,53 +1,45 @@
+// codestudio==>https://www.codingninjas.com/codestudio/problems/920551?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=1
 
-// BIPARTITE GRAPH USING DFS
-#include <bits/stdc++.h>
-using namespace std;
-// vector<int> adj[];
-vector<int> calar;
-vector<int> vis;
-bool bipart=true;
-void colorkaro(int u, int curr, vector<int> adj[])
-{
-    // agar current node already colored h aur uska color curr k equal nhi h toh nhi bipartite h
-    if (calar[u] != -1 && calar[u] != curr)
-    {
-        bipart = false;
-        return;
-    }
-    calar[u] = curr;
-    if (vis[u])
-    {
-        return;
-    }
-    vis[u] = true;
-    for (auto i : adj[u])
-    {
-        colorkaro(i, 1 - curr, adj);
-    }
-}
-int32_t main()
-{
-    int n, m;
-    cin >> n >> m;
-    vector<int> adj[n + 1];
-    vis.resize(n, 0);
-    calar.resize(n, -1);
-    for (int i = 0; i < m; i++)
-    {
-        int u, v;
-        cin >> u >> v;
-        adj[u].push_back(v);
-        adj[v].push_back(u);
-    }
-    for (int i = 0; i < n; i++)
-    {
-        if (!vis[i])
-        {
-            colorkaro(i, 0, adj);
+#include<bits/stdc++.h>
+bool check_bipartite(int src, vector<int> adj[], vector<int> & color){
+    color[src] = 1;
+    queue<int> q;
+    q.push(src);
+    while(!q.empty()){
+        int node = q.front();
+        q.pop();
+        for(auto it: adj[node]){
+            if(color[it] == -1){
+                color[it] = 1 - color[node];
+                q.push(it);
+            }
+            else if(color[it] == color[node]) return false;
         }
     }
-    if (bipart)
-        cout << "Graph is bipart";
-    else
-        cout << "Graph is not bipartite";
+    return true;
+}
+
+bool isGraphBirpatite(vector<vector<int>> &edges) {
+    // Write your code here.    
+    int n = edges[0].size();
+    vector<int> adj[n];
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if(edges[i][j]==1)
+            {
+                adj[i].push_back(j);
+                adj[j].push_back(i);
+            }
+        }
+    }
+    
+    vector<int> color(n, -1);
+    for(int i=0;i<n;i++){
+        if(color[i]==-1){
+            if(check_bipartite(i,adj,color)==false) return false;
+        }
+    }
+    return true;
 }
